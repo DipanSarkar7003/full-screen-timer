@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>full screen timer</title>
+</head>
+<style>
+    body {
+        background-color: rgb(19, 18, 18);
+        margin: auto;
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+
+    }
+
+    h1 {
+        color: blanchedalmond;
+        font-size: 26vw;
+        margin:  auto;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-family: Geneva, Tahoma, sans-serif;
+        font-weight: 500;
+
+    }
+    p{
+        text-align: center;
+        color: aliceblue;
+        text-transform: capitalize;
+    }
+    p button{
+        padding: 0.51% 1%;
+        background-color:grey ;
+        border: none;
+        border-radius: 10%;
+    }
+   
+</style>
+
+<body>
+    <h1><span class="minute">00</span> : <span class="second">00</span></h1>
+
+
+<p>press  <button>Space</button>  to play and pause</p>
+<p>press  <button>R</button>  to reset the time</p>
+
+    <script>
+        let realSecond = 0;
+        let realMinute = 0;
+        let programStoped = false
+
+        const minute = document.querySelector(".minute")
+        const second = document.querySelector(".second")
+
+        function minuteMaking() {
+            if (realMinute < 10) {
+
+                minute.innerHTML = "0" + realMinute
+            }
+            else {
+                minute.innerHTML = realMinute
+            }
+        }
+        function secondMaking() {
+            if (realSecond < 10) {
+
+                second.innerHTML = "0" + realSecond
+            }
+            else {
+                second.innerHTML = realSecond
+            }
+        }
+
+        const program = setInterval(() => {
+            if (!programStoped) {
+
+                realSecond += 1
+                secondMaking()
+                minuteMaking()
+
+
+                if (realSecond == 60) {
+                    realSecond = 0
+                    secondMaking()
+                    realMinute += 1
+                    minuteMaking()
+                }
+            }
+        }, 1000);
+
+
+        window.addEventListener("keydown", (e) => {
+            console.log(typeof(e.code))
+            if(e.code=="Space")programStoped = !programStoped
+
+
+        })
+
+window.addEventListener("keydown",(e)=>{
+    if(e.code=="R")
+    realMinute = 0 
+    realSecond = 0
+})
+
+    </script>
+</body>
+
+</html>
