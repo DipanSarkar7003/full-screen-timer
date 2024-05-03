@@ -10,8 +10,8 @@
 <style>
     body {
         background-color: rgb(19, 18, 18);
-        margin: auto;
-        height: 100vh;
+        /* margin: auto; */
+        /* height: 70vh; */
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -22,12 +22,12 @@
     h1 {
         color: blanchedalmond;
         font-size: 26vw;
-        margin:  auto;
         display: flex;
         align-items: center;
         justify-content: center;
         font-family: Geneva, Tahoma, sans-serif;
         font-weight: 500;
+        margin: 0;
 
     }
     p{
@@ -97,17 +97,17 @@
 
 
         window.addEventListener("keydown", (e) => {
-            console.log(typeof(e.code))
+            console.log(e.code)
             if(e.code=="Space")programStoped = !programStoped
-
+            if(e.code=="KeyR"){
+        console.log(e.code)
+        realMinute = 0 
+        realSecond = 0
+    }
 
         })
 
-window.addEventListener("keydown",(e)=>{
-    if(e.code=="R")
-    realMinute = 0 
-    realSecond = 0
-})
+
 
     </script>
 </body>
